@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Mapas eleitorais de MS</title>
+<style>
+:root{--bg:#f6f4f1;--panel:#fff;--ink:#1f1a18;--ink-2:#5b524d;--line:#e3ddd7;--accent:#b3261e;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#171514;--panel:#201d1b;--ink:#f4efeb;--ink-2:#c9c0b9;--line:#36312e;--accent:#f07a70;color-scheme:dark}}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,sans-serif;padding:16px;box-sizing:border-box}
+form{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;display:grid;gap:12px;width:min(340px,100%)}
+h1{font-size:20px;margin:0}
+p{margin:0;color:var(--ink-2);font-size:14px}
+input{font:inherit;font-size:20px;letter-spacing:.2em;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+input:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button{font:600 16px system-ui,sans-serif;padding:10px;border:0;border-radius:10px;background:var(--accent);color:#fff;cursor:pointer}
+button[disabled]{opacity:.6;cursor:wait}
+#err{color:var(--accent);min-height:1.2em;font-size:14px}
+</style>
+</head>
+<body>
+<form id="f" autocomplete="off">
+  <h1>Mapas eleitorais de MS</h1>
+  <p>Conteúdo restrito. Digite o PIN de acesso.</p>
+  <input id="pin" type="password" inputmode="text" aria-label="PIN" required autofocus>
+  <button id="b" type="submit">Entrar</button>
+  <div id="err" role="alert"></div>
+</form>
+<script>
+const P={"s": "cZnZ778G9Q7QAjBNIWGo+w==", "i": "o+oG+OBkmcIYEFTi", "c": "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"};
+const b64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+async function open_(pin){
+  const km=await crypto.subtle.importKey('raw',new TextEncoder().encode(pin),'PBKDF2',false,['deriveKey']);
+  const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(P.s),iterations:600000,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt']);
+  const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(P.i)},key,b64(P.c));
+  return new TextDecoder().decode(pt);
+}
+function show(html){document.open();document.write(html);document.close();}
+async function tryPin(pin,remember){
+  const html=await open_(pin);
+  if(remember){try{sessionStorage.setItem('mapas-pin',pin)}catch(e){}}
+  show(html);
+}
+(async()=>{let s=null; try{s=sessionStorage.getItem('mapas-pin')}catch(e){} if(s){try{await tryPin(s,false)}catch(e){}}})();
+document.getElementById('f').addEventListener('submit',async e=>{
+  e.preventDefault(); const b=document.getElementById('b'), err=document.getElementById('err');
+  b.disabled=true; err.textContent='';
+  try{await tryPin(document.getElementById('pin').value,true)}catch(x){err.textContent='PIN incorreto. Tente de novo.'; b.disabled=false;}
+});
+</script>
+</body>
+</html>
